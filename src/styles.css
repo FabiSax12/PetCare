@@ -1,1 +1,184 @@
+@import "tailwindcss";
+
 /* You can add global styles to this file, and also import other style files */
+
+@theme {
+  --color-bg-primary: #F4F1EB;
+  --color-fg-primary: #6D6F72;
+  --color-bg-secondary: #22262B;
+  --color-fg-secondary: #FFFFFF;
+  --color-highlight: #FFCB24;
+
+  --color-bg-red: #FF0000;
+  --color-bg-green: #00FF00;
+  --color-bg-yellow: #FF9D00;
+
+  --color-fg-red: #9C0000;
+  --color-fg-green: #008809;
+  --color-fg-yellow: #986800;
+
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+}
+
+:root {
+  --bg-primary: #F4F1EB;
+  --fg-primary: #6D6F72;
+  --bg-secondary: #22262B;
+  --fg-secondary: #FFFFFF;
+  --highlight: #FFCB24;
+
+  --bg-red: #FF0000;
+  --bg-green: #00FF00;
+  --bg-yellow: #FF9D00;
+
+  --fg-red: #9C0000;
+  --fg-green: #008809;
+  --fg-yellow: #986800;
+
+  --white: #FFFFFF;
+  --black: #000000;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+li {
+  list-style: none;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--fg-primary);
+  margin: 0;
+  height: 100vh;
+  padding: 20px;
+}
+
+.sidebar_container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  max-width: min-content;
+}
+
+.sidebar_logo {
+  display: flex;
+  flex-direction: column;
+  max-height: min-content;
+  max-width: min-content;
+  justify-content: center;
+  align-items: center;
+  font-size: small;
+  font-weight: bold;
+
+  svg {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.sidebar_main-nav {
+  width: 50px;
+  padding: 6px;
+  flex-grow: 1;
+  background-color: var(--white);
+  color: #fff;
+  border-radius: 176px;
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+.sidebar_user-nav {
+  width: 50px;
+  padding: 6px;
+  /* height: 100px; */
+  background-color: var(--white);
+  color: #fff;
+  border-radius: 176px;
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+.navbar_item {
+  border-radius: 100%;
+  width: 100%;
+  aspect-ratio: 1/1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--fg-primary);
+  list-style: none;
+  text-decoration: none;
+
+  &.active {
+    background-color: var(--bg-secondary);
+    color: var(--highlight);
+  }
+
+  &:hover {
+    color: var(--highlight);
+  }
+}
+
+lucide-angular {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tabs {
+  height: 50px;
+  padding: 6px;
+  background-color: var(--white);
+  color: #fff;
+  border-radius: 176px;
+
+  display: flex;
+  gap: 8px;
+
+  .navbar_item {
+    border-radius: 100%;
+    height: 100%;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--fg-primary);
+    list-style: none;
+    text-decoration: none;
+
+    &.active {
+      background-color: var(--bg-secondary);
+      color: var(--highlight);
+    }
+
+    &:hover {
+      /* background-color: var(--bg-secondary); */
+      color: var(--highlight);
+    }
+  }
+}
