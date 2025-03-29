@@ -1,11 +1,62 @@
-export interface PetData {
+export interface Vaccination {
   name: string;
-  breed: string;
-  age: number;
+  date: Date;
+  nextDueDate: Date;
+  isCompleted: boolean;
+  notes: string;
 }
 
-export interface OwnerData {
+export interface Pet {
+  id: number;
   name: string;
-  phoneNumber: string;
-  pets: PetData[]
+  race: string;
+  age: number;
+  img: string;
+  vaccinations: Vaccination[];
+  owner: Client["user"];
+}
+
+export interface PetWithOwner extends Omit<Pet, "owner"> {
+  owner: Client;
+}
+
+interface Person {
+  user: string;
+  password: string;
+  name: string;
+  phoneNumber: number;
+}
+
+export interface Branch {
+  name: string;
+  address: string;
+  phoneNumber: number;
+}
+
+export interface Client extends Person {
+  pets: Pet["id"][];
+}
+
+export interface ClientWithPets extends Person {
+  pets: Pet[];
+}
+
+export interface Vet extends Person {
+  img: string;
+  turn: "Nocturno" | "Diurno";
+  isBusy: boolean;
+  branches: Branch["name"][];
+}
+
+export interface VetWithBranches extends Person {
+  branches: Branch[];
+}
+
+export interface UserLogin {
+  user: string;
+  password: string;
+}
+
+export interface VetLogin extends UserLogin {
+  branch: Branch["name"];
 }
