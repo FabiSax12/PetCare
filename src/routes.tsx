@@ -26,7 +26,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "login",
-        element: <LoginPage type="sucursalUser" />,
+        element: <LoginPage type="vet" />,
       },
       {
         path: ":sucursal",
