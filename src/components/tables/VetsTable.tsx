@@ -1,13 +1,17 @@
+import { useState } from "react"
 import { VetService } from "../../services/vet.service"
 import { TableGrid } from "../TableGrid"
+import Modal from "../ui/Modal"
 import { TableRowCard } from "../ui/TableRowCard"
 
 export const VetsTable = () => {
+  const [isModalOpen, setModalOpen] = useState(false);
+
   const vetService = new VetService()
 
   return (
     <>
-      <TableGrid title="Veterinarios">
+      <TableGrid title="Veterinarios" onAddButtonClick={() => setModalOpen(true)}>
         {vetService.getAll().map((vet, i) => (
           <TableRowCard key={i}>
             <div className="flex items-center gap-3">
@@ -18,14 +22,14 @@ export const VetsTable = () => {
               </div>
             </div>
             <span className="text-[--color-fg-primary] font-medium">{vet.isBusy ? "Ocupado" : "Disponible"}</span>
-            {/* <div className="flex items-center gap-4">
-              <button className="text-xl text-gray-400 hover:text-gray-600 cursor-pointer" onClick={() => openModalWithItem(vet)}>
-                <ExternalLink size={15} />
-              </button>
-            </div> */}
           </TableRowCard>
         ))}
       </TableGrid>
+      <Modal isOpen={isModalOpen} onClose={() => setModalOpen(false)}>
+        <div className="flex flex-col gap-4">
+          <h2 className="text-xl font-semibold">Registrar veterinario</h2>
+        </div>
+      </Modal>
     </>
   )
 }

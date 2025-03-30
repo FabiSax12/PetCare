@@ -3,25 +3,21 @@ import { TableRowCard } from "../ui/TableRowCard";
 import { useState } from "react";
 import Modal from "../ui/Modal";
 import { PetsService } from "../../services/pets.service";
-import { PetWithOwner } from "../../types";
 import { TableGrid } from "../TableGrid";
+import { useNavigate, useParams } from "react-router";
 
 export const PetsTable = () => {
+  const navigate = useNavigate();
+  const params = useParams();
+
+  const [isAddModalOpen, setAddModalOpen] = useState(false);
 
   const petsService = new PetsService()
-
-  const [selectedItem, setSelectedItem] = useState<null | PetWithOwner>(null);
-  const [isModalOpen, setModalOpen] = useState(false);
-
-  const openModalWithItem = (item: PetWithOwner) => {
-    setSelectedItem(item);
-    setModalOpen(true);
-  };
 
 
   return (
     <>
-      <TableGrid title="Mascotas">
+      <TableGrid title="Mascotas" onAddButtonClick={() => setAddModalOpen(true)}>
         {petsService.getAllWithOwner().map((pet, i) => (
           <TableRowCard key={i}>
             <div className="flex items-center gap-3">
@@ -33,22 +29,18 @@ export const PetsTable = () => {
             </div>
             <span className="text-[--color-fg-primary] font-medium">{pet.race}</span>
             <div className="flex items-center gap-4">
-              <button className="text-xl text-gray-400 hover:text-gray-600 cursor-pointer" onClick={() => openModalWithItem(pet)}>
-                <ExternalLink size={15} />
+              <button className="text-xl text-gray-400 hover:text-gray-600 cursor-pointer" onClick={() => navigate(`/veterinaria/${params.branch}/dashboard/tablas/mascotas/${pet.id}`)}>
+                <ExternalLink />
               </button>
             </div>
           </TableRowCard>
         ))}
       </TableGrid>
 
-      <Modal isOpen={isModalOpen} onClose={() => setModalOpen(false)}>
-        {selectedItem && (
-          <div>
-            <h2 className="text-xl font-bold mb-2">Detalles de mascota</h2>
-            <img src={selectedItem.img} alt="" />
-            <p>{selectedItem.name}</p>
-          </div>
-        )}
+      <Modal isOpen={isAddModalOpen} onClose={() => setAddModalOpen(false)}>
+        <div>
+          <h2 className="text-xl font-bold mb-2">Registrar mascota</h2>
+        </div>
       </Modal>
     </>
   );

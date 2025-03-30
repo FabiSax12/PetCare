@@ -3,9 +3,10 @@ import { Plus } from "lucide-react"
 interface Props {
   title?: string;
   children: React.ReactNode;
+  onAddButtonClick?: () => void;
 }
 
-export const TableGrid = ({ title, children }: Props) => {
+export const TableGrid = ({ title, children, onAddButtonClick }: Props) => {
   return (
     <div className="p-6 rounded-xl w-full mx-auto">
       <div className="flex justify-between items-center mb-4">
@@ -14,7 +15,7 @@ export const TableGrid = ({ title, children }: Props) => {
           Añadir
           <button
             className="bg-bg-secondary cursor-pointer p-1 rounded-full flex items-center justify-center text-highlight"
-            onClick={() => alert('Añadir')}
+            onClick={onAddButtonClick}
           >
             <Plus />
           </button>
