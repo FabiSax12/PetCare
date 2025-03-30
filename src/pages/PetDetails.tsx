@@ -1,6 +1,7 @@
 import { useParams } from "react-router";
 import { PetsService } from "../services/pets.service";
 import { ClientsService } from "../services/clients.service";
+import { diets } from "../mock/diets"; // Asegúrate de importar las diets
 
 export const PetDetails = () => {
   const { petId } = useParams();
@@ -14,11 +15,14 @@ export const PetDetails = () => {
 
   const petOwner = clientService.getByUsername(pet.owner);
 
+  // Obtener la dieta asociada con la mascota
+  const petDieta = diets.find((dieta) => dieta.name === pet.diet.name);
+
   return (
-    <div className="max-w-3xl mx-auto">
+    <div className="max-w-3xl mx-auto flex flex-col gap-8">
       <h2 className="text-2xl font-semibold text-center mb-6">Detalles de la mascota</h2>
 
-      <div className="flex gap-6 mb-6">
+      <div className="flex gap-6">
         <img
           src={pet.img}
           alt={pet.name}
@@ -30,6 +34,30 @@ export const PetDetails = () => {
           <p className="text-sm text-gray-500">Edad: {pet.age} años</p>
           <p className="text-sm text-gray-500">Dueño: {petOwner?.name ?? "Sin dueño"}</p>
         </div>
+      </div>
+
+      {/* Dieta */}
+      <div className="mt-6">
+        <h3 className="text-xl font-semibold text-[#FF9D00] mb-4">Dieta</h3>
+        {petDieta ? (
+          <div className="space-y-2 p-4 bg-[#F4F1EB] rounded-lg shadow-sm">
+            <h4 className="text-lg font-semibold text-[#FF9D00]">{petDieta.name}</h4>
+            <div className="flex justify-between">
+              <span className="font-medium text-red-600">Proteínas</span>
+              <span>{petDieta.proteins}</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="font-medium text-green-600">Grasas</span>
+              <span>{petDieta.fats}</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="font-medium text-yellow-400">Minerales</span>
+              <span>{petDieta.minerals}</span>
+            </div>
+          </div>
+        ) : (
+          <p className="text-gray-500">No se ha asignado una dieta para esta mascota.</p>
+        )}
       </div>
 
       {/* Vacunas */}
@@ -60,6 +88,8 @@ export const PetDetails = () => {
           </ul>
         )}
       </div>
+
+
     </div>
   );
 };

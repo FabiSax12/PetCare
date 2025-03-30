@@ -14,6 +14,8 @@ export interface Pet {
   img: string;
   vaccinations: Vaccination[];
   owner: Client["user"];
+  diet: Diet;
+  isInEmergency: boolean;
 }
 
 export interface PetWithOwner extends Omit<Pet, "owner"> {
@@ -67,4 +69,11 @@ export interface Message {
   receiver: Person["user"];
   date: Date;
   content: string;
+}
+
+export interface Diet {
+  name: string;
+  proteins: string; // % de proteínas
+  fats: string;     // % de grasas
+  minerals: string; // % de minerales
 }

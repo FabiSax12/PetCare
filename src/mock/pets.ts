@@ -1,4 +1,6 @@
-import { Pet, Vaccination } from "../types";
+// Añadimos los campos 'diet' y 'isInEmergency' a las mascotas.
+import { Pet } from "../types";
+import { diets } from './diets'; // Asumiendo que ya tienes las diets mockeadas
 
 export const pets: Pet[] = [
   {
@@ -24,6 +26,8 @@ export const pets: Pet[] = [
         notes: 'Pendiente de refuerzo',
       },
     ],
+    diet: diets[0], // BARF
+    isInEmergency: false,
   },
   {
     id: 2,
@@ -48,6 +52,8 @@ export const pets: Pet[] = [
         notes: 'Pendiente de refuerzo',
       },
     ],
+    diet: diets[1], // Dieta Cocida Casera
+    isInEmergency: true, // Emergencia
   },
   {
     id: 3,
@@ -72,6 +78,8 @@ export const pets: Pet[] = [
         notes: 'Pendiente de refuerzo',
       },
     ],
+    diet: diets[2], // Dieta Húmeda
+    isInEmergency: false,
   },
   {
     id: 4,
@@ -96,6 +104,8 @@ export const pets: Pet[] = [
         notes: 'Pendiente de refuerzo',
       },
     ],
+    diet: diets[4], // Dieta de Conejos
+    isInEmergency: false,
   },
   {
     id: 5,
@@ -113,6 +123,8 @@ export const pets: Pet[] = [
         notes: 'Vacuna completa',
       },
     ],
+    diet: diets[10], // Dieta de Hurones
+    isInEmergency: false,
   },
   {
     id: 6,
@@ -130,6 +142,8 @@ export const pets: Pet[] = [
         notes: 'Vacuna completa',
       },
     ],
+    diet: diets[5], // Dieta de Cobayas
+    isInEmergency: false,
   },
   {
     id: 7,
@@ -154,6 +168,8 @@ export const pets: Pet[] = [
         notes: 'Pendiente de refuerzo',
       },
     ],
+    diet: diets[0], // BARF (más adecuado para perros)
+    isInEmergency: false,
   },
   {
     id: 8,
@@ -171,6 +187,8 @@ export const pets: Pet[] = [
         notes: 'Vacuna completa',
       },
     ],
+    diet: diets[5], // Dieta de Cobayas
+    isInEmergency: true, // Emergencia
   },
   {
     id: 9,
@@ -188,6 +206,8 @@ export const pets: Pet[] = [
         notes: 'Vacuna completa',
       },
     ],
+    diet: diets[6], // Dieta de Aves (apropiado para loros)
+    isInEmergency: false,
   },
   {
     id: 10,
@@ -205,5 +225,7 @@ export const pets: Pet[] = [
         notes: 'Vacuna completa',
       },
     ],
+    diet: diets[8], // Pienso Seco (apropiado para reptiles)
+    isInEmergency: false,
   },
 ];
