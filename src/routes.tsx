@@ -17,6 +17,7 @@ import { HomePage } from './pages/HomePage'
 import { ChatPage } from './pages/ChatPage'
 import { ChatContent } from './components/ChatContent'
 import { PetDetails } from './pages/PetDetails'
+import { ProtectedPage } from './pages/ProtectedPage'
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +34,7 @@ export const router = createBrowserRouter([
       },
       {
         path: ":branch",
+        Component: ProtectedPage,
         children: [
           {
             path: 'dashboard',
@@ -132,7 +134,13 @@ export const router = createBrowserRouter([
       },
       {
         path: ":username",
-        Component: DashboardLayout,
+        Component: ProtectedPage,
+        children: [
+          {
+            index: true,
+            Component: DashboardLayout
+          }
+        ]
       }
     ]
   }

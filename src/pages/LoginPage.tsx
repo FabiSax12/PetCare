@@ -19,7 +19,7 @@ const LoginPage = ({ type }: Props) => {
     const vet = vets.find(vet => vet.user === data.user);
 
     if (vet && vet.password === data.password && vet.branches.some(b => b === data.branch)) {
-      authContext.login(vet.user)
+      authContext.login(vet.user, "vet")
       return navigate(`/veterinaria/${data.branch}/dashboard/emergencias`);
     }
 
@@ -30,6 +30,7 @@ const LoginPage = ({ type }: Props) => {
     const client = clientsService.getAll().find(client => client.user === data.user);
 
     if (client && client.password === data.password) {
+      authContext.login(client.user, "client")
       return navigate(`/cliente/${client.user}/mascotas`);
     }
 

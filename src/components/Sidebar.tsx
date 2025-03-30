@@ -3,6 +3,8 @@ import { Logo } from "./Logo"
 import { ButtonWrapper } from "./ui/ButtonWrapper"
 import { NavContainer } from "./ui/NavContainer"
 import { useNavigate } from "react-router"
+import { use } from "react"
+import { AuthContext } from "../context/auth"
 
 const navItems = [
   { icon: BriefcaseMedical, href: 'emergencias' },
@@ -16,9 +18,11 @@ const navItems = [
 
 export const Sidebar = () => {
   const navigate = useNavigate()
+  const { logout } = use(AuthContext)
 
   const handleLogOut = () => {
     alert('Logged out')
+    logout()
     navigate("/")
   }
 
