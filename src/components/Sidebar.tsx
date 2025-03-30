@@ -1,4 +1,4 @@
-import { Bone, BriefcaseMedical, Calendar, ChartSpline, Hotel, LogOutIcon, Table, UserIcon } from "lucide-react"
+import { Bone, BriefcaseMedical, Calendar, ChartSpline, Hotel, LogOutIcon, MessageSquareMore, Table, UserIcon } from "lucide-react"
 import { Logo } from "./Logo"
 import { ButtonWrapper } from "./ui/ButtonWrapper"
 import { NavContainer } from "./ui/NavContainer"
@@ -10,7 +10,8 @@ const navItems = [
   { icon: Bone, href: 'nutricion' },
   { icon: Hotel, href: 'hospedaje' },
   { icon: Table, href: 'tablas' },
-  { icon: ChartSpline, href: 'finanzas' }
+  { icon: ChartSpline, href: 'finanzas' },
+  { icon: MessageSquareMore, href: 'chats' }
 ]
 
 export const Sidebar = () => {

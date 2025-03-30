@@ -14,6 +14,9 @@ import { VetsTable } from './components/tables/VetsTable'
 import { PetsTable } from './components/tables/PetsTable'
 import LoginPage from './pages/LoginPage'
 import { HomePage } from './pages/HomePage'
+import { ChatPage } from './pages/ChatPage'
+import { ChatContent } from './components/ChatContent'
+import { PetDetails } from './pages/PetDetails'
 
 export const router = createBrowserRouter([
   {
@@ -29,7 +32,7 @@ export const router = createBrowserRouter([
         element: <LoginPage type="vet" />,
       },
       {
-        path: ":sucursal",
+        path: ":branch",
         children: [
           {
             path: 'dashboard',
@@ -87,7 +90,11 @@ export const router = createBrowserRouter([
                   },
                   {
                     path: 'mascotas',
-                    Component: PetsTable
+                    Component: PetsTable,
+                  },
+                  {
+                    path: "mascotas/:petId",
+                    Component: PetDetails
                   }
                 ]
               }
@@ -95,6 +102,16 @@ export const router = createBrowserRouter([
               {
                 path: "finanzas",
                 Component: FinancePage
+              },
+              {
+                path: "chats",
+                Component: ChatPage,
+                children: [
+                  {
+                    path: ":client",
+                    Component: ChatContent
+                  }
+                ]
               },
               {
                 path: 'user/profile',

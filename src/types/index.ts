@@ -60,3 +60,11 @@ export interface UserLogin {
 export interface VetLogin extends UserLogin {
   branch: Branch["name"];
 }
+
+export interface Message {
+  id: number;
+  sender: Person["user"];
+  receiver: Person["user"];
+  date: Date;
+  content: string;
+}
