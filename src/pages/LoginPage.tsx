@@ -3,6 +3,8 @@ import { LoginForm } from '../components/auth/LoginForm';
 import { vets } from '../mock/vets';
 import { ClientsService } from '../services/clients.service';
 import { UserLogin, VetLogin } from '../types';
+import { AuthContext } from '../context/auth';
+import { useContext } from 'react';
 
 interface Props {
   type: "vet" | "client";
@@ -10,12 +12,14 @@ interface Props {
 
 const LoginPage = ({ type }: Props) => {
   const navigate = useNavigate()
+  const authContext = useContext(AuthContext)
   const clientsService = new ClientsService()
 
   const handleVetLogin = (data: VetLogin) => {
     const vet = vets.find(vet => vet.user === data.user);
 
-    if (vet && vet.password === data.password && vet.branch === data.branch) {
+    if (vet && vet.password === data.password && vet.branches.some(b => b === data.branch)) {
+      authContext.login(vet.user)
       return navigate(`/veterinaria/${data.branch}/dashboard/emergencias`);
     }
 

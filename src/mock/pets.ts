@@ -1,4 +1,4 @@
-import { Pet } from "../types";
+import { Pet, Vaccination } from "../types";
 
 export const pets: Pet[] = [
   {
@@ -8,7 +8,22 @@ export const pets: Pet[] = [
     race: 'Perro',
     img: '/images/pets/dog.png',
     age: 3,
-    vaccinations: []
+    vaccinations: [
+      {
+        name: 'Rabia',
+        date: new Date('2023-01-15'),
+        nextDueDate: new Date('2024-01-15'),
+        isCompleted: true,
+        notes: 'Vacuna completa',
+      },
+      {
+        name: 'Parvovirus',
+        date: new Date('2023-03-01'),
+        nextDueDate: new Date('2024-03-01'),
+        isCompleted: false,
+        notes: 'Pendiente de refuerzo',
+      },
+    ],
   },
   {
     id: 2,
@@ -17,7 +32,22 @@ export const pets: Pet[] = [
     race: 'Perro',
     img: '/images/pets/dog.png',
     age: 2,
-    vaccinations: []
+    vaccinations: [
+      {
+        name: 'Rabia',
+        date: new Date('2023-02-20'),
+        nextDueDate: new Date('2024-02-20'),
+        isCompleted: true,
+        notes: 'Vacuna completa',
+      },
+      {
+        name: 'Leptospirosis',
+        date: new Date('2023-04-15'),
+        nextDueDate: new Date('2024-04-15'),
+        isCompleted: false,
+        notes: 'Pendiente de refuerzo',
+      },
+    ],
   },
   {
     id: 3,
@@ -26,7 +56,22 @@ export const pets: Pet[] = [
     race: 'Gato',
     img: '/images/pets/cat.jpg',
     age: 1,
-    vaccinations: []
+    vaccinations: [
+      {
+        name: 'Trivalente Felina',
+        date: new Date('2023-06-10'),
+        nextDueDate: new Date('2024-06-10'),
+        isCompleted: true,
+        notes: 'Vacuna completa',
+      },
+      {
+        name: 'Leucemia Felina',
+        date: new Date('2023-07-01'),
+        nextDueDate: new Date('2024-07-01'),
+        isCompleted: false,
+        notes: 'Pendiente de refuerzo',
+      },
+    ],
   },
   {
     id: 4,
@@ -35,7 +80,22 @@ export const pets: Pet[] = [
     race: 'Conejo',
     img: '/images/pets/rabbit.jpg',
     age: 4,
-    vaccinations: []
+    vaccinations: [
+      {
+        name: 'Mixomatosis',
+        date: new Date('2023-01-20'),
+        nextDueDate: new Date('2024-01-20'),
+        isCompleted: true,
+        notes: 'Vacuna completa',
+      },
+      {
+        name: 'RHDV2',
+        date: new Date('2023-03-05'),
+        nextDueDate: new Date('2024-03-05'),
+        isCompleted: false,
+        notes: 'Pendiente de refuerzo',
+      },
+    ],
   },
   {
     id: 5,
@@ -44,7 +104,15 @@ export const pets: Pet[] = [
     race: 'Hurón',
     img: '/images/pets/huron.jpg',
     age: 2,
-    vaccinations: []
+    vaccinations: [
+      {
+        name: 'Rabia',
+        date: new Date('2023-03-10'),
+        nextDueDate: new Date('2024-03-10'),
+        isCompleted: true,
+        notes: 'Vacuna completa',
+      },
+    ],
   },
   {
     id: 6,
@@ -53,7 +121,15 @@ export const pets: Pet[] = [
     race: 'Hámster',
     img: '/images/pets/hamster.jpg',
     age: 1,
-    vaccinations: []
+    vaccinations: [
+      {
+        name: 'Antiparasitario',
+        date: new Date('2023-05-12'),
+        nextDueDate: new Date('2024-05-12'),
+        isCompleted: true,
+        notes: 'Vacuna completa',
+      },
+    ],
   },
   {
     id: 7,
@@ -62,7 +138,22 @@ export const pets: Pet[] = [
     race: 'Perro',
     img: '/images/pets/dog.png',
     age: 3,
-    vaccinations: []
+    vaccinations: [
+      {
+        name: 'Rabia',
+        date: new Date('2022-12-01'),
+        nextDueDate: new Date('2023-12-01'),
+        isCompleted: true,
+        notes: 'Vacuna completa',
+      },
+      {
+        name: 'Parvovirus',
+        date: new Date('2023-02-15'),
+        nextDueDate: new Date('2024-02-15'),
+        isCompleted: false,
+        notes: 'Pendiente de refuerzo',
+      },
+    ],
   },
   {
     id: 8,
@@ -71,7 +162,15 @@ export const pets: Pet[] = [
     race: 'Cobaya',
     img: '/images/pets/cobaya.jpg',
     age: 2,
-    vaccinations: []
+    vaccinations: [
+      {
+        name: 'Antiparasitario',
+        date: new Date('2023-04-20'),
+        nextDueDate: new Date('2024-04-20'),
+        isCompleted: true,
+        notes: 'Vacuna completa',
+      },
+    ],
   },
   {
     id: 9,
@@ -80,7 +179,15 @@ export const pets: Pet[] = [
     race: 'Lora',
     img: '/images/pets/lora.jpg',
     age: 1,
-    vaccinations: []
+    vaccinations: [
+      {
+        name: 'Antiparasitario',
+        date: new Date('2023-03-25'),
+        nextDueDate: new Date('2024-03-25'),
+        isCompleted: true,
+        notes: 'Vacuna completa',
+      },
+    ],
   },
   {
     id: 10,
@@ -89,6 +196,14 @@ export const pets: Pet[] = [
     race: 'Iguana',
     img: '/images/pets/camaleon.jpg',
     age: 4,
-    vaccinations: []
+    vaccinations: [
+      {
+        name: 'Rabia',
+        date: new Date('2023-01-01'),
+        nextDueDate: new Date('2024-01-01'),
+        isCompleted: true,
+        notes: 'Vacuna completa',
+      },
+    ],
   },
 ];
