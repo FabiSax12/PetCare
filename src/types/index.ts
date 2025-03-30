@@ -16,6 +16,7 @@ export interface Pet {
   owner: Client["user"];
   diet: Diet;
   isInEmergency: boolean;
+  hotelRoom: HotelRoom;
 }
 
 export interface PetWithOwner extends Omit<Pet, "owner"> {
@@ -76,4 +77,9 @@ export interface Diet {
   proteins: string; // % de proteínas
   fats: string;     // % de grasas
   minerals: string; // % de minerales
+}
+
+export interface HotelRoom {
+  id: string;
+  daysLeft: number;
 }

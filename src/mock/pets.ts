@@ -1,6 +1,5 @@
-// Añadimos los campos 'diet' y 'isInEmergency' a las mascotas.
 import { Pet } from "../types";
-import { diets } from './diets'; // Asumiendo que ya tienes las diets mockeadas
+import { diets } from './diets';
 
 export const pets: Pet[] = [
   {
@@ -28,6 +27,10 @@ export const pets: Pet[] = [
     ],
     diet: diets[0], // BARF
     isInEmergency: false,
+    hotelRoom: {
+      id: "A1",
+      daysLeft: 2
+    }
   },
   {
     id: 2,
@@ -54,6 +57,10 @@ export const pets: Pet[] = [
     ],
     diet: diets[1], // Dieta Cocida Casera
     isInEmergency: true, // Emergencia
+    hotelRoom: {
+      id: "A2",
+      daysLeft: 10
+    }
   },
   {
     id: 3,
@@ -80,6 +87,10 @@ export const pets: Pet[] = [
     ],
     diet: diets[2], // Dieta Húmeda
     isInEmergency: false,
+    hotelRoom: {
+      id: "A3",
+      daysLeft: 1
+    }
   },
   {
     id: 4,
@@ -106,6 +117,10 @@ export const pets: Pet[] = [
     ],
     diet: diets[4], // Dieta de Conejos
     isInEmergency: false,
+    hotelRoom: {
+      id: "A4",
+      daysLeft: 4
+    }
   },
   {
     id: 5,
@@ -125,6 +140,10 @@ export const pets: Pet[] = [
     ],
     diet: diets[10], // Dieta de Hurones
     isInEmergency: false,
+    hotelRoom: {
+      id: "A5",
+      daysLeft: 2
+    }
   },
   {
     id: 6,
@@ -144,6 +163,10 @@ export const pets: Pet[] = [
     ],
     diet: diets[5], // Dieta de Cobayas
     isInEmergency: false,
+    hotelRoom: {
+      id: "A6",
+      daysLeft: 1
+    }
   },
   {
     id: 7,
@@ -170,6 +193,10 @@ export const pets: Pet[] = [
     ],
     diet: diets[0], // BARF (más adecuado para perros)
     isInEmergency: false,
+    hotelRoom: {
+      id: "A7",
+      daysLeft: 5
+    }
   },
   {
     id: 8,
@@ -189,6 +216,10 @@ export const pets: Pet[] = [
     ],
     diet: diets[5], // Dieta de Cobayas
     isInEmergency: true, // Emergencia
+    hotelRoom: {
+      id: "A8",
+      daysLeft: 8
+    }
   },
   {
     id: 9,
@@ -208,6 +239,10 @@ export const pets: Pet[] = [
     ],
     diet: diets[6], // Dieta de Aves (apropiado para loros)
     isInEmergency: false,
+    hotelRoom: {
+      id: "A9",
+      daysLeft: 1
+    }
   },
   {
     id: 10,
@@ -227,5 +262,9 @@ export const pets: Pet[] = [
     ],
     diet: diets[8], // Pienso Seco (apropiado para reptiles)
     isInEmergency: false,
+    hotelRoom: {
+      id: "A10",
+      daysLeft: 0
+    }
   },
 ];

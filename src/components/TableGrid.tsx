@@ -5,9 +5,10 @@ interface Props {
   children: React.ReactNode;
   onAddButtonClick?: () => void;
   hasAddButton?: boolean;
+  columns?: number;
 }
 
-export const TableGrid = ({ title, children, onAddButtonClick, hasAddButton = true }: Props) => {
+export const TableGrid = ({ title, children, onAddButtonClick, columns, hasAddButton = true }: Props) => {
   return (
     <div className="p-6 rounded-xl w-full mx-auto">
       <div className="flex justify-between items-center mb-4">
@@ -23,7 +24,7 @@ export const TableGrid = ({ title, children, onAddButtonClick, hasAddButton = tr
         </button>}
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <div className={`grid ${columns ? `grid-cols-${columns}` : "grid-cols-1"} gap-4`}>
         {children}
       </div>
     </div>
