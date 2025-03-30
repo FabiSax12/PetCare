@@ -24,4 +24,8 @@ export class PetsService {
       owner: clientsService.getByUsername(pet.owner)!,
     }));
   }
+
+  getInEmergency(): Pet[] {
+    return pets.filter((pet) => pet.isInEmergency);
+  }
 }
