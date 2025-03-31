@@ -62,4 +62,28 @@ export const appointments: Appointment[] = [
     reason: 'just because',
     status: 'scheduled'
   },
+  {
+    id: 4,
+    title: "Corte de pelo - Bella",
+    start: dayjs().add(2, "day").hour(11).minute(0).toDate(),
+    end: dayjs().add(2, "day").hour(11).minute(45).toDate(),
+    petId: 4,
+    ownerId: 4,
+    type: 'aesthetic',
+    technicianId: 1,
+    service: 'haircut',
+    status: 'scheduled'
+  },
+  {
+    id: 4,
+    title: " Baño - Bella",
+    start: dayjs().add(2, "day").hour(11).minute(0).toDate(),
+    end: dayjs().add(2, "day").hour(11).minute(45).toDate(),
+    petId: 4,
+    ownerId: 4,
+    type: 'aesthetic',
+    technicianId: 1,
+    service: 'haircut',
+    status: 'scheduled'
+  }
 ]

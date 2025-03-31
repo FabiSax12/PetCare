@@ -148,7 +148,7 @@ export interface MedicalAppointment extends BaseAppointment {
 
 export interface AestheticAppointment extends BaseAppointment {
   type: 'aesthetic'; 
-  technicianId: string;
+  technicianId: number;
   service: string; // El 'title' podría ser simplemente el nombre del servicio
   room?: string;
 }
@@ -156,25 +156,3 @@ export interface AestheticAppointment extends BaseAppointment {
 
 export type Appointment = MedicalAppointment | AestheticAppointment;
 
-// // --- Ejemplo de uso ---
-// function processAppointment(appointment: Appointment) {
-//   console.log(`Cita ID: ${appointment.id}, Inicia: ${appointment.start}`);
-
-//   // TypeScript sabe qué campos están disponibles gracias al 'type'
-//   switch (appointment.type) {
-//     case 'medical':
-//       console.log(`Tipo: Médica`);
-//       console.log(`Doctor ID: ${appointment.doctorId}`); // Acceso seguro
-//       console.log(`Motivo: ${appointment.reason}`);
-//       break;
-//     case 'aesthetic':
-//       console.log(`Tipo: Estética`);
-//       console.log(`Técnico ID: ${appointment.technicianId}`); // Acceso seguro
-//       console.log(`Servicio: ${appointment.service}`);
-//       break;
-//     default:
-//       // Manejar caso imposible (buena práctica)
-//       const _exhaustiveCheck: never = appointment;
-//       return _exhaustiveCheck;
-//   }
-// }

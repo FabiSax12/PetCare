@@ -86,7 +86,7 @@ export const AppointmentsService = {
     },
   
     // Obtener citas de estética por técnico
-    getAestheticAppointmentsByTechnician: (technicianId: string): AestheticAppointment[] => {
+    getAestheticAppointmentsByTechnician: (technicianId: number): AestheticAppointment[] => {
       return appointments.filter(
         (a): a is AestheticAppointment => a.type === "aesthetic" && a.technicianId === technicianId,
       )
