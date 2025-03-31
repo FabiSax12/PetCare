@@ -122,3 +122,59 @@ export interface Notification {
   client: string;
   preferredContact: "email" | "sms";
 }
+
+
+interface BaseAppointment {
+  id: string | number;
+  title: string; 
+  start: Date;
+  end: Date;
+  petId: number;
+  ownerId: number
+  status: 'scheduled' | 'completed' | 'cancelled' | 'no-show';
+  notes?: string;
+}
+
+
+export interface MedicalAppointment extends BaseAppointment {
+  type: 'medical'; 
+  doctorId: number;
+  specialty?: string;
+  reason: string;
+  isFollowUp?: boolean;
+  // El 'title' podría ser generado: `Consulta ${specialty || 'General'} con Dr. X`
+}
+
+
+export interface AestheticAppointment extends BaseAppointment {
+  type: 'aesthetic'; 
+  technicianId: string;
+  service: string; // El 'title' podría ser simplemente el nombre del servicio
+  room?: string;
+}
+
+
+export type Appointment = MedicalAppointment | AestheticAppointment;
+
+// // --- Ejemplo de uso ---
+// function processAppointment(appointment: Appointment) {
+//   console.log(`Cita ID: ${appointment.id}, Inicia: ${appointment.start}`);
+
+//   // TypeScript sabe qué campos están disponibles gracias al 'type'
+//   switch (appointment.type) {
+//     case 'medical':
+//       console.log(`Tipo: Médica`);
+//       console.log(`Doctor ID: ${appointment.doctorId}`); // Acceso seguro
+//       console.log(`Motivo: ${appointment.reason}`);
+//       break;
+//     case 'aesthetic':
+//       console.log(`Tipo: Estética`);
+//       console.log(`Técnico ID: ${appointment.technicianId}`); // Acceso seguro
+//       console.log(`Servicio: ${appointment.service}`);
+//       break;
+//     default:
+//       // Manejar caso imposible (buena práctica)
+//       const _exhaustiveCheck: never = appointment;
+//       return _exhaustiveCheck;
+//   }
+// }
