@@ -1,21 +1,9 @@
-import { useParams } from "react-router"
-import { MessageService } from "../services/message.service"
-import { AuthContext } from "../context/auth"
-import { useContext } from "react"
+import { useOutletContext } from "react-router"
 import { ChatMessage } from "./ui/ChatMessage"
+import { Message } from "../types"
 
 export const ChatContent = () => {
-
-  const authContext = useContext(AuthContext)
-  const params = useParams()
-  const messageService = new MessageService()
-
-  console.log("params", params)
-  console.log("user", authContext.user)
-
-  if (!authContext.user || !params.client) return null
-
-  const messages = messageService.getChatMessages(authContext.user.username, params.client)
+  const messages = useOutletContext() as Message[]
 
   return (
     <div>
