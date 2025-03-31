@@ -1,4 +1,4 @@
-import { Bell, LogOutIcon, MessageSquareMore, PawPrint, UserIcon } from "lucide-react"
+import { BellDot, LogOutIcon, MessageSquareMore, PawPrint, UserIcon } from "lucide-react"
 import { Logo } from "./Logo"
 import { ButtonWrapper } from "./ui/ButtonWrapper"
 import { NavContainer } from "./ui/NavContainer"
@@ -7,7 +7,7 @@ import { use } from "react"
 import { AuthContext } from "../context/auth"
 
 const navItems = [
-  { icon: Bell, href: 'notificaciones' },
+  { icon: BellDot, href: 'notificaciones' },
   { icon: PawPrint, href: 'mascotas' },
   { icon: MessageSquareMore, href: 'chats' }
 ]

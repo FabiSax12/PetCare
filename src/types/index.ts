@@ -112,3 +112,13 @@ export interface HotelRoom {
   id: string;
   daysLeft: number;
 }
+
+export interface Notification {
+  id: string;
+  type: "cita" | "vacunacion" | "examen" | "reprogramacion" | "tratamiento";
+  message: string;
+  date: string;
+  read: boolean;
+  client: string;
+  preferredContact: "email" | "sms";
+}
