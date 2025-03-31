@@ -1,23 +1,12 @@
-import { useParams } from "react-router";
-import { PetsService } from "../services/pets.service";
-import { ClientsService } from "../services/clients.service";
-import { diets } from "../mock/diets"; // Asegúrate de importar las diets
+import { Client, Diet, Pet } from "../types";
 
-export const PetDetails = () => {
-  const { petId } = useParams();
+interface Props {
+  pet: Pet;
+  petDieta?: Diet;
+  petOwner?: Client;
+}
 
-  const petService = new PetsService();
-  const clientService = new ClientsService();
-
-  const pet = petService.getById(parseInt(petId!));
-
-  if (!pet) return <div>Mascota con el id {petId} no encontrado</div>;
-
-  const petOwner = clientService.getByUsername(pet.owner);
-
-  // Obtener la dieta asociada con la mascota
-  const petDieta = diets.find((dieta) => dieta.name === pet.diet.name);
-
+export const PetDetailsCard = ({ pet, petDieta, petOwner }: Props) => {
   return (
     <div className="max-w-3xl mx-auto flex flex-col gap-8">
       <h2 className="text-2xl font-semibold text-center mb-6">Detalles de la mascota</h2>
@@ -91,5 +80,5 @@ export const PetDetails = () => {
 
 
     </div>
-  );
-};
+  )
+}

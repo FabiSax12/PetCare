@@ -6,17 +6,43 @@ export interface Vaccination {
   notes: string;
 }
 
+export interface Allergy {
+  name: string;
+  symptoms: string[];
+  severity: "Mild" | "Moderate" | "Severe";
+}
+
+export interface Disease {
+  name: string;
+  symptoms: string[];
+  severity: "Mild" | "Moderate" | "Severe";
+  treatment: string;
+}
+
+export interface MedicalHistory {
+  date: Date;
+  description: string;
+  treatment?: string;
+  notes?: string;
+}
+
 export interface Pet {
   id: number;
   name: string;
   race: string;
   age: number;
+  gender: "M" | "F";
+  color: string;
+  weight: number;
   img: string;
-  vaccinations: Vaccination[];
   owner: Client["user"];
   diet: Diet;
   isInEmergency: boolean;
   hotelRoom: HotelRoom;
+  vaccinations: Vaccination[];
+  allergies: Allergy[];
+  diseases: Disease[];
+  medicalHistory: MedicalHistory[];
 }
 
 export interface PetWithOwner extends Omit<Pet, "owner"> {
@@ -24,10 +50,13 @@ export interface PetWithOwner extends Omit<Pet, "owner"> {
 }
 
 interface Person {
+  name: string;
+  id: number;
+  phoneNumber: number;
+  email: string;
+  address: string;
   user: string;
   password: string;
-  name: string;
-  phoneNumber: number;
 }
 
 export interface Branch {
