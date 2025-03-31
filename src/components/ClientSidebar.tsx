@@ -1,4 +1,4 @@
-import { Bone, BriefcaseMedical, Calendar, ChartSpline, Hotel, LogOutIcon, MessageSquareMore, Table, UserIcon } from "lucide-react"
+import { BellDot, LogOutIcon, MessageSquareMore, PawPrint, UserIcon } from "lucide-react"
 import { Logo } from "./Logo"
 import { ButtonWrapper } from "./ui/ButtonWrapper"
 import { NavContainer } from "./ui/NavContainer"
@@ -7,16 +7,12 @@ import { use } from "react"
 import { AuthContext } from "../context/auth"
 
 const navItems = [
-  { icon: BriefcaseMedical, href: 'emergencias' },
-  { icon: Calendar, href: 'citas' },
-  { icon: Bone, href: 'nutricion' },
-  { icon: Hotel, href: 'hospedaje' },
-  { icon: Table, href: 'tablas' },
-  { icon: ChartSpline, href: 'finanzas' },
+  { icon: BellDot, href: 'notificaciones' },
+  { icon: PawPrint, href: 'mascotas' },
   { icon: MessageSquareMore, href: 'chats' }
 ]
 
-export const Sidebar = () => {
+export const ClientSidebar = () => {
   const navigate = useNavigate()
   const { logout } = use(AuthContext)
 
