@@ -31,7 +31,7 @@ const LoginPage = ({ type }: Props) => {
 
     if (client && client.password === data.password) {
       authContext.login(client.user, "client")
-      return navigate(`/cliente/${client.user}/mascotas`);
+      return navigate(`/cliente/${client.user}/dashboard/notificaciones`);
     }
 
     console.log('Error de autenticación del cliente');
