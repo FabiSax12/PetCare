@@ -122,3 +122,37 @@ export interface Notification {
   client: string;
   preferredContact: "email" | "sms";
 }
+
+
+interface BaseAppointment {
+  id: string | number;
+  title: string; 
+  start: Date;
+  end: Date;
+  petId: number;
+  ownerId: number
+  status: 'scheduled' | 'completed' | 'cancelled' | 'no-show';
+  notes?: string;
+}
+
+
+export interface MedicalAppointment extends BaseAppointment {
+  type: 'medical'; 
+  doctorId: number;
+  specialty?: string;
+  reason: string;
+  isFollowUp?: boolean;
+  // El 'title' podría ser generado: `Consulta ${specialty || 'General'} con Dr. X`
+}
+
+
+export interface AestheticAppointment extends BaseAppointment {
+  type: 'aesthetic'; 
+  technicianId: number;
+  service: string; // El 'title' podría ser simplemente el nombre del servicio
+  room?: string;
+}
+
+
+export type Appointment = MedicalAppointment | AestheticAppointment;
+
