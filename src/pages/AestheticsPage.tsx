@@ -15,7 +15,7 @@ export const AestheticsPage = () => {
   return (
     <WeeklyCalendar
       appointments={appointments}
-      title="Consultas Estéticas"
+      // title="Consultas Estéticas"
       aestheticAppointmentColor="#FBBF24" // Color amarillo para estética
       getAppointmentSubtitle={getAppointmentSubtitle}
     />

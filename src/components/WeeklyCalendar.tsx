@@ -1,3 +1,7 @@
+
+
+
+
 // src/components/WeeklyCalendar.tsx
 "use client";
 
@@ -7,7 +11,7 @@ import "dayjs/locale/es";
 import weekOfYear from "dayjs/plugin/weekOfYear";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import isBetween from "dayjs/plugin/isBetween"; // Para comprobar si una cita está en el slot
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Weight } from "lucide-react";
 import type { Appointment, MedicalAppointment, AestheticAppointment } from "../types";
 
 // Configura dayjs
@@ -116,7 +120,7 @@ export const WeeklyCalendar = ({
  // --- Calcular Estilo de Cita (Posición y Altura Relativa al Día) ---
  const calculateAppointmentStyle = (appointment: Appointment, dayStartTime: dayjs.Dayjs, totalDayHeightPx: number, hourHeightPx: number) => {
     if (!appointment || !appointment.start || !appointment.end) {
-      return { top: 0, height: hourHeightPx, display: 'none' };
+      return { top: 0, height: hourHeightPx, display: 'none',innerWidth:widthValue};
     }
 
     const startOfDay = dayStartTime.startOf('day'); // Referencia: inicio del día
@@ -146,42 +150,45 @@ export const WeeklyCalendar = ({
       backgroundColorClass: backgroundColorClass,
     };
   };
-
+  const widthValue = 108; // Ancho de las celdas
   const hourHeightPx = 64; // Corresponde a h-16 de Tailwind. ¡Asegúrate que coincida!
   const totalDayHeightPx = timeSlots.length * hourHeightPx; // Altura total de la columna de un día
 return (
   // Contenedor principal del componente
-  <div className="flex flex-col fixed bottom-8 top-25 right-13 left-35 bg-white rounded-lg shadow-md border border-gray-200 ">
+  <div className="flex flex-col fixed bottom-8 top-25 right-13 left-35 bg-white rounded-lg shadow-md border border-gray-200 " style={{height: `${totalDayHeightPx}px`}}>
 
     {/* 1. Barra de Navegación */}
     <CalendarNavBar currentDate={currentDate} onNavigate={navigateWeek} />
 
     {/* 2. Encabezado de Días (Una sola fila, 7 columnas) */}
-    <div className="padding-2 bg-gray-100 flex items-center border-b border-gray-200 height-16">
-      <div className="sticky left-0 top-0 font-semibold z-10 border-r border-gray-200 min-w-[60px] md:min-w-[80px]">Hora</div>
+    <div className="padding-2 bg-gray-100 flex items-center border-b border-gray-200 height-16 text-center" >
+      {/* Columna de Hora (Sticky a la izquierda) */}
+      <div className="sticky left-0 top-0 font-semibold z-10 border-r border-gray-200 min-w-[60px] md:min-w-[80px]" >Hora</div>
       {/* Nombres de los días */}
       {weekDays.map((day) => (
         <div
           key={day.format("YYYY-MM-DD-header")}
           className="flex-1 text-justify-center items-center font-semibold text-sm capitalize border-r border-gray-200 p-2"
+        
         >
           {day.format("dddd")}
         </div>
-      ))}
+      ))} {/* fin nombres días */}
     </div>
 
     {/* 3. Contenedor Principal del Cuerpo (Este tendrá el scroll INTERNO) */}
     <div
       ref={scrollContainerRef}
-      className="overflow-y-auto relative"
+      className="overflow-y-auto"
       style={{ height: calendarHeight }} // ALTURA FIJA
     >
+
       {/* Contenedor Flex para alinear la Columna de Horas y Grid de Días */}
-      <div className="flex">
+      <div className="flex" style={{ background: "g" ,height:calendarHeight}}>
 
         {/* 3.1 Columna de Horas (Sticky a la izquierda) */}
-        <div className="sticky left-0 top-0 bg-white z-10 border-r border-gray-200 min-w-[60px] md:min-w-[80px]">
-          <div style={{ height: `${totalDayHeightPx}px` }}>
+        <div className=" bg-white z-10 border-r border-gray-200 min-w-[60px] md:min-w-[80px] text-center">
+          <div style={{ height: `${totalDayHeightPx}px`}}>
             {timeSlots.map((time) => (
               <div
                 key={time.format("HH:mm")}
@@ -195,19 +202,19 @@ return (
         </div>
 
         {/* 3.2 Grid de Días y Citas */}
-        <div className="flex-grow grid grid-cols-7">
+        <div className=" bg-gray-100 flex items-center border-b border-gray-200 height-16 text-center" style={{height: `${totalDayHeightPx}px`,width:'100%' }}>
           {weekDays.map((day) => (
             <div
               key={day.format("YYYY-MM-DD-col")}
-              className="relative border-r border-gray-200 last:border-r-0"
-              style={{ height: `${totalDayHeightPx}px` }}
+              className="relative border-r top-0 border-gray-200 last:border-r-0" 
+              style={{ height: `${totalDayHeightPx}px` ,width:'100%' }}
             >
               {/* Líneas Horizontales de Hora */}
-              {timeSlots.map((_, index) => (
+              {timeSlots.map((index) => (
                 <div
                   key={`line-${day.format("YYYY-MM-DD")}-${index}`}
-                  className="border-b border-gray-100"
-                  style={{ height: `${hourHeightPx}px` }}
+                  className=" border-b" 
+                  style={ {borderRight: '1px solid black',height: `${hourHeightPx}px`,width:'auto'}}
                 ></div>
               ))}
 
@@ -229,7 +236,7 @@ return (
                       key={appointment.id}
                       onClick={() => onSelectAppointment?.(appointment)}
                       className={`absolute left-1 right-1 rounded p-1 text-white text-[10px] leading-tight cursor-pointer overflow-hidden ${backgroundColorClass} z-20`}
-                      style={{ top, height }}
+                      style={{ top, height, margin: "5px" }}
                       title={appointment.title}
                     >
                       <div className="font-semibold truncate">{displayTitle}</div>
