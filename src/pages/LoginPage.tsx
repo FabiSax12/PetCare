@@ -1,10 +1,9 @@
 import { useNavigate } from 'react-router';
 import { LoginForm } from '../components/auth/LoginForm';
-import { vets } from '../mock/vets';
-import { ClientsService } from '../services/clients.service';
 import { UserLogin, VetLogin } from '../types';
 import { AuthContext } from '../context/auth';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
+import { clientService, vetService } from '../services';
 
 interface Props {
   type: "vet" | "client";
@@ -13,12 +12,14 @@ interface Props {
 const LoginPage = ({ type }: Props) => {
   const navigate = useNavigate()
   const authContext = useContext(AuthContext)
-  const clientsService = new ClientsService()
+
+  const [vets] = useState(vetService.getAllWithBranches())
+  const [allClients] = useState(clientService.getAll())
 
   const handleVetLogin = (data: VetLogin) => {
     const vet = vets.find(vet => vet.user === data.user);
 
-    if (vet && vet.password === data.password && vet.branches.some(b => b === data.branch)) {
+    if (vet && vet.password === data.password && vet.branches.some(b => b.name === data.branch)) {
       authContext.login(vet.user, "vet")
       return navigate(`/veterinaria/${data.branch}/dashboard/emergencias`);
     }
@@ -27,7 +28,7 @@ const LoginPage = ({ type }: Props) => {
   };
 
   const handleClienteLogin = (data: UserLogin) => {
-    const client = clientsService.getAll().find(client => client.user === data.user);
+    const client = allClients.find(client => client.user === data.user);
 
     if (client && client.password === data.password) {
       authContext.login(client.user, "client")

@@ -1,12 +1,9 @@
 import { useContext, useState } from 'react';
-import { ClientsService } from '../services/clients.service';
 import { AuthContext } from '../context/auth';
 import { Button } from '../components/ui/Button';
-import { PetsService } from '../services/pets.service';
+import { clientService, petService } from '../services';
 
 export const ClientProfilePage = () => {
-  const clientService = new ClientsService();
-  const petService = new PetsService();
   const { user } = useContext(AuthContext);
 
   const client = clientService.getByUsername(user?.username || "");
@@ -14,7 +11,7 @@ export const ClientProfilePage = () => {
   // Estados para manejar los datos
   const [name, setName] = useState(client?.name || '');
   const [phoneNumber, setPhoneNumber] = useState(client?.phoneNumber || '');
-  const [pets, setPets] = useState(client?.pets || []);
+  const [pets] = useState(client?.pets || []);
   const [password, setPassword] = useState(client?.password || '');
   // Estado para controlar si estamos en modo edición
   const [isEditing, setIsEditing] = useState(false);
@@ -112,8 +109,8 @@ export const ClientProfilePage = () => {
             <input
               id="pets"
               type="text"
-              value={pets.join(', ')} // Muestra las mascotas separadas por coma
-              onChange={(e) => setPets(e.target.value.split(',').map(pet => pet.trim()))}
+              value={pets.join(', ')}
+              // onChange={(e) => setPets(e.target.value.split(',').map(pet => pet.trim()))}
               className="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
             <p className="text-xs text-gray-500">Separe las mascotas por coma.</p>

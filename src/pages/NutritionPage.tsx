@@ -1,8 +1,6 @@
-import { useState } from 'react';
-import { diets } from '../mock/diets';
-import { Diet } from '../types';
 import { TableGrid } from '../components/TableGrid';
 import { TableRowCard } from '../components/ui/TableRowCard';
+import { dietService } from '../services';
 
 export const NutritionPage = () => {
   return (
@@ -26,7 +24,7 @@ export const NutritionPage = () => {
       </div>
 
       <TableGrid hasAddButton={false}>
-        {diets.map((dieta, index) => (
+        {dietService.getAllDiets().map((dieta, index) => (
           <TableRowCard
             key={index}
             className="flex flex-col"

@@ -1,13 +1,11 @@
 import { useState } from "react"
-import { VetService } from "../../services/vet.service"
 import { TableGrid } from "../TableGrid"
 import Modal from "../ui/Modal"
 import { TableRowCard } from "../ui/TableRowCard"
+import { vetService } from "../../services"
 
 export const VetsTable = () => {
   const [isModalOpen, setModalOpen] = useState(false);
-
-  const vetService = new VetService()
 
   return (
     <>

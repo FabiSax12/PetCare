@@ -1,0 +1,436 @@
+[
+  {
+    "id": 1,
+    "name": "Oliver",
+    "owner": "j.salas",
+    "race": "Perro",
+    "img": "/images/pets/dog.png",
+    "age": 3,
+    "allergies": [
+      "Polvo",
+      "Granos"
+    ],
+    "color": "Marrón",
+    "diseases": [
+      "Dermatitis"
+    ],
+    "gender": "M",
+    "medicalHistory": [
+      {
+        "date": "2022-05-15",
+        "treatment": "Tratamiento para dermatitis",
+        "description": "Tratamiento con cremas y baños especiales",
+        "notes": "Mejoría notable después de 2 semanas"
+      }
+    ],
+    "weight": 10.5,
+    "vaccinations": [
+      {
+        "name": "Rabia",
+        "date": "2023-01-15",
+        "nextDueDate": "2024-01-15",
+        "isCompleted": true,
+        "notes": "Vacuna completa"
+      },
+      {
+        "name": "Parvovirus",
+        "date": "2023-03-01",
+        "nextDueDate": "2024-03-01",
+        "isCompleted": false,
+        "notes": "Pendiente de refuerzo"
+      }
+    ],
+    "diet": 1,
+    "isInEmergency": false,
+    "hotelRoom": {
+      "id": "A1",
+      "daysLeft": 2
+    }
+  },
+  {
+    "id": 2,
+    "name": "Lucifer",
+    "owner": "j.salas",
+    "race": "Perro",
+    "img": "/images/pets/dog.png",
+    "age": 2,
+    "allergies": [
+      "Polvo"
+    ],
+    "color": "Negro",
+    "diseases": [
+      "Leishmaniasis"
+    ],
+    "gender": "F",
+    "medicalHistory": [
+      {
+        "date": "2023-02-10",
+        "treatment": "Tratamiento para leishmaniasis",
+        "description": "Se administró medicación antiparasitaria y se recomendó seguimiento mensual para controlar la enfermedad."
+      }
+    ],
+    "weight": 12.3,
+    "vaccinations": [
+      {
+        "name": "Rabia",
+        "date": "2023-02-20",
+        "nextDueDate": "2024-02-20",
+        "isCompleted": true,
+        "notes": "Vacuna completa"
+      },
+      {
+        "name": "Leptospirosis",
+        "date": "2023-04-15",
+        "nextDueDate": "2024-04-15",
+        "isCompleted": false,
+        "notes": "Pendiente de refuerzo"
+      }
+    ],
+    "diet": 2,
+    "isInEmergency": true,
+    "hotelRoom": {
+      "id": "A2",
+      "daysLeft": 10
+    }
+  },
+  {
+    "id": 3,
+    "name": "Aarón",
+    "owner": "f.vargas",
+    "race": "Gato",
+    "img": "/images/pets/cat.jpg",
+    "age": 1,
+    "allergies": [
+      "Polen"
+    ],
+    "color": "Gris",
+    "diseases": [
+      "Asma felina"
+    ],
+    "gender": "M",
+    "medicalHistory": [
+      {
+        "date": "2023-05-10",
+        "treatment": "Tratamiento para asma",
+        "description": "Se administró medicación inhalada y se recomendó evitar el polvo en el hogar.",
+        "notes": "Controlado con medicación diaria"
+      }
+    ],
+    "weight": 5.2,
+    "vaccinations": [
+      {
+        "name": "Trivalente Felina",
+        "date": "2023-06-10",
+        "nextDueDate": "2024-06-10",
+        "isCompleted": true,
+        "notes": "Vacuna completa"
+      },
+      {
+        "name": "Leucemia Felina",
+        "date": "2023-07-01",
+        "nextDueDate": "2024-07-01",
+        "isCompleted": false,
+        "notes": "Pendiente de refuerzo"
+      }
+    ],
+    "diet": 3,
+    "isInEmergency": false,
+    "hotelRoom": {
+      "id": "A3",
+      "daysLeft": 1
+    }
+  },
+  {
+    "id": 4,
+    "name": "Teriyaki",
+    "owner": "l.rios",
+    "race": "Conejo",
+    "img": "/images/pets/rabbit.jpg",
+    "age": 4,
+    "allergies": [
+      "Heno"
+    ],
+    "color": "Blanco",
+    "diseases": [
+      "Mixomatosis"
+    ],
+    "gender": "F",
+    "medicalHistory": [
+      {
+        "date": "2023-02-20",
+        "treatment": "Tratamiento para Mixomatosis",
+        "description": "Se administró medicación y se recomendó aislamiento por 2 semanas.",
+        "notes": "Controlado y en recuperación"
+      }
+    ],
+    "weight": 3.4,
+    "vaccinations": [
+      {
+        "name": "Mixomatosis",
+        "date": "2023-01-20",
+        "nextDueDate": "2024-01-20",
+        "isCompleted": true,
+        "notes": "Vacuna completa"
+      },
+      {
+        "name": "RHDV2",
+        "date": "2023-03-05",
+        "nextDueDate": "2024-03-05",
+        "isCompleted": false,
+        "notes": "Pendiente de refuerzo"
+      }
+    ],
+    "diet": 5,
+    "isInEmergency": false,
+    "hotelRoom": {
+      "id": "A4",
+      "daysLeft": 4
+    }
+  },
+  {
+    "id": 5,
+    "name": "Lukas",
+    "owner": "l.rios",
+    "race": "Hurón",
+    "img": "/images/pets/huron.jpg",
+    "age": 2,
+    "allergies": [
+      "Granos"
+    ],
+    "color": "Beige",
+    "diseases": [
+      "Hipoglucemia"
+    ],
+    "gender": "M",
+    "medicalHistory": [
+      {
+        "date": "2023-03-10",
+        "treatment": "Tratamiento para hipoglucemia",
+        "description": "Se administró medicación y se recomendó dieta alta en proteínas.",
+        "notes": "Controlado y en buena salud"
+      }
+    ],
+    "weight": 1.5,
+    "vaccinations": [
+      {
+        "name": "Rabia",
+        "date": "2023-03-10",
+        "nextDueDate": "2024-03-10",
+        "isCompleted": true,
+        "notes": "Vacuna completa"
+      }
+    ],
+    "diet": 11,
+    "isInEmergency": false,
+    "hotelRoom": {
+      "id": "A5",
+      "daysLeft": 2
+    }
+  },
+  {
+    "id": 6,
+    "name": "Alón",
+    "owner": "d.molina",
+    "race": "Hámster",
+    "img": "/images/pets/hamster.jpg",
+    "age": 1,
+    "allergies": [
+      "Polvo"
+    ],
+    "color": "Marrón",
+    "diseases": [
+      "Obesidad"
+    ],
+    "gender": "F",
+    "medicalHistory": [
+      {
+        "date": "2023-05-12",
+        "treatment": "Tratamiento para obesidad",
+        "description": "Se recomendó dieta baja en grasas y ejercicio diario.",
+        "notes": "Controlado y en proceso de pérdida de peso"
+      }
+    ],
+    "weight": 0.3,
+    "vaccinations": [
+      {
+        "name": "Antiparasitario",
+        "date": "2023-05-12",
+        "nextDueDate": "2024-05-12",
+        "isCompleted": true,
+        "notes": "Vacuna completa"
+      }
+    ],
+    "diet": 6,
+    "isInEmergency": false,
+    "hotelRoom": {
+      "id": "A6",
+      "daysLeft": 1
+    }
+  },
+  {
+    "id": 7,
+    "name": "Jos",
+    "owner": "d.molina",
+    "race": "Perro",
+    "img": "/images/pets/dog.png",
+    "age": 3,
+    "allergies": [
+      "Polen"
+    ],
+    "color": "Blanco",
+    "diseases": [
+      "Artritis"
+    ],
+    "gender": "M",
+    "medicalHistory": [
+      {
+        "date": "2023-02-10",
+        "treatment": "Tratamiento para artritis",
+        "description": "Se administró medicación antiinflamatoria y se recomendó fisioterapia.",
+        "notes": "Controlado y en proceso de recuperación"
+      }
+    ],
+    "weight": 13.2,
+    "vaccinations": [
+      {
+        "name": "Rabia",
+        "date": "2022-12-01",
+        "nextDueDate": "2023-12-01",
+        "isCompleted": true,
+        "notes": "Vacuna completa"
+      },
+      {
+        "name": "Parvovirus",
+        "date": "2023-02-15",
+        "nextDueDate": "2024-02-15",
+        "isCompleted": false,
+        "notes": "Pendiente de refuerzo"
+      }
+    ],
+    "diet": 1,
+    "isInEmergency": false,
+    "hotelRoom": {
+      "id": "A7",
+      "daysLeft": 5
+    }
+  },
+  {
+    "id": 8,
+    "name": "Coba-Yaisel",
+    "owner": "a.lios",
+    "race": "Cobaya",
+    "img": "/images/pets/cobaya.jpg",
+    "age": 2,
+    "allergies": [
+      "Polvo"
+    ],
+    "color": "Negro",
+    "diseases": [
+      "Hipertensión"
+    ],
+    "gender": "F",
+    "medicalHistory": [
+      {
+        "date": "2023-04-20",
+        "treatment": "Tratamiento para hipertensión",
+        "description": ""
+      }
+    ],
+    "weight": 0.8,
+    "vaccinations": [
+      {
+        "name": "Antiparasitario",
+        "date": "2023-04-20",
+        "nextDueDate": "2024-04-20",
+        "isCompleted": true,
+        "notes": "Vacuna completa"
+      }
+    ],
+    "diet": 6,
+    "isInEmergency": true,
+    "hotelRoom": {
+      "id": "A8",
+      "daysLeft": 8
+    }
+  },
+  {
+    "id": 9,
+    "name": "Nibbird",
+    "owner": "p.castillo",
+    "race": "Lora",
+    "img": "/images/pets/lora.jpg",
+    "age": 1,
+    "allergies": [
+      "Semillas"
+    ],
+    "color": "Verde",
+    "diseases": [
+      "Infección respiratoria"
+    ],
+    "gender": "M",
+    "medicalHistory": [
+      {
+        "date": "2023-03-25",
+        "treatment": "Tratamiento para infección respiratoria",
+        "description": "Se administró antibiótico y se recomendó mantener en un ambiente cálido.",
+        "notes": "Controlado y en recuperación"
+      }
+    ],
+    "weight": 0.5,
+    "vaccinations": [
+      {
+        "name": "Antiparasitario",
+        "date": "2023-03-25",
+        "nextDueDate": "2024-03-25",
+        "isCompleted": true,
+        "notes": "Vacuna completa"
+      }
+    ],
+    "diet": 7,
+    "isInEmergency": false,
+    "hotelRoom": {
+      "id": "A9",
+      "daysLeft": 1
+    }
+  },
+  {
+    "id": 10,
+    "name": "Eduardou",
+    "owner": "v.sandi",
+    "race": "Iguana",
+    "img": "/images/pets/camaleon.jpg",
+    "age": 4,
+    "allergies": [
+      "Temperatura baja"
+    ],
+    "color": "Verde",
+    "diseases": [
+      "Desnutrición"
+    ],
+    "gender": "M",
+    "medicalHistory": [
+      {
+        "date": "2023-01-01",
+        "treatment": "Tratamiento para desnutrición",
+        "description": "Se administró suplemento vitamínico y se recomendó dieta rica en calcio.",
+        "notes": "Controlado y en proceso de recuperación"
+      }
+    ],
+    "weight": 1.2,
+    "vaccinations": [
+      {
+        "name": "Rabia",
+        "date": "2023-01-01",
+        "nextDueDate": "2024-01-01",
+        "isCompleted": true,
+        "notes": "Vacuna completa"
+      }
+    ],
+    "diet": 9,
+    "isInEmergency": false,
+    "hotelRoom": {
+      "id": "A10",
+      "daysLeft": 0
+    }
+  }
+]

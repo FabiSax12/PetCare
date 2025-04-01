@@ -1,11 +1,9 @@
 import { SendHorizonal } from "lucide-react";
 import { Navigate, NavLink, Outlet, useParams } from "react-router";
-import { ClientsService } from "../services/clients.service";
-import { useState, useEffect, useMemo, use } from "react";
+import { useState, useEffect, use } from "react";
 import { AuthContext } from "../context/auth";
-import { MessageService } from "../services/message.service";
 import { Message } from "../types";
-import { VetService } from "../services/vet.service";
+import { clientService, messageService, vetService } from "../services";
 
 interface Props {
   side?: "vetSide" | "clientSide";
@@ -18,18 +16,13 @@ export const ChatPage = ({ side }: Props) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [messageText, setMessageText] = useState("");
 
-  const clientService = new ClientsService();
-  const vetService = new VetService();
-  const messageService = useMemo(() => new MessageService(), []);
-
-
   useEffect(() => {
     if (side === "vetSide" && chatUser) {
-      setMessages(messageService.getChatMessages(authContext.user!.username, chatUser));
+      setMessages(messageService.getMessagesBetween(authContext.user!.username, chatUser));
     } else if (side === "clientSide" && chatUser) {
-      setMessages(messageService.getChatMessages(chatUser, authContext.user!.username));
+      setMessages(messageService.getMessagesBetween(chatUser, authContext.user!.username));
     }
-  }, [side, chatUser, authContext.user, messageService]);
+  }, [side, chatUser, authContext.user]);
 
   const handleSendMessage = () => {
     if (messageText.trim() !== "") {

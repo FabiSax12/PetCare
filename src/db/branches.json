@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Alajuela",
+    "address": "Alajuela, Costa Rica",
+    "phoneNumber": 12345678
+  },
+  {
+    "id": 2,
+    "name": "Cartago",
+    "address": "Cartago, Costa Rica",
+    "phoneNumber": 23456789
+  },
+  {
+    "id": 3,
+    "name": "Heredia",
+    "address": "Heredia, Costa Rica",
+    "phoneNumber": 34567890
+  },
+  {
+    "id": 4,
+    "name": "San José",
+    "address": "San José, Costa Rica",
+    "phoneNumber": 45678901
+  }
+]

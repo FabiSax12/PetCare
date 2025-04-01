@@ -2,9 +2,9 @@ import { ExternalLink } from "lucide-react";
 import { TableRowCard } from "../ui/TableRowCard";
 import { useState } from "react";
 import Modal from "../ui/Modal";
-import { PetsService } from "../../services/pets.service";
 import { TableGrid } from "../TableGrid";
 import { useNavigate, useParams } from "react-router";
+import { petService } from "../../services";
 
 export const PetsTable = () => {
   const navigate = useNavigate();
@@ -12,13 +12,10 @@ export const PetsTable = () => {
 
   const [isAddModalOpen, setAddModalOpen] = useState(false);
 
-  const petsService = new PetsService()
-
-
   return (
     <>
       <TableGrid title="Mascotas" onAddButtonClick={() => setAddModalOpen(true)}>
-        {petsService.getAllWithOwner().map((pet, i) => (
+        {petService.getAllWithOwner().map((pet, i) => (
           <TableRowCard key={i}>
             <div className="flex items-center gap-3">
               <img src={pet.img} alt={pet.name} className="w-16 h-16 rounded-full object-cover" />

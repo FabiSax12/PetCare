@@ -1,14 +1,13 @@
 import { ExternalLink } from "lucide-react";
 import { TableGrid } from "../components/TableGrid";
 import { TableRowCard } from "../components/ui/TableRowCard";
-import { PetsService } from "../services/pets.service";
 import { useParams, useNavigate } from "react-router";
+import { petService } from "../services";
 
 export const HotelPage = () => {
   const params = useParams();
   const navigate = useNavigate();
 
-  const petService = new PetsService();
   const petsInHotel = petService.getAllWithOwner().filter((pet) => pet.hotelRoom);
 
   return (
