@@ -1,9 +1,7 @@
 import { useState } from "react";
-import { PetsService } from "../services/pets.service";
+import { petService } from "../services";
 
 export const EmergenciesPage = () => {
-  const petService = new PetsService()
-
   const [emergencyPets] = useState(petService.getInEmergency())
 
   return (

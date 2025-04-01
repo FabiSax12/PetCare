@@ -1,22 +1,21 @@
 import { useState, useEffect, useContext } from "react";
-import { NotificationsService } from "../services/notifications.service";
 import { AuthContext } from "../context/auth";
 import { Notification } from "../types";
 import { CheckCheck } from "lucide-react";
+import { notificationService } from "../services";
 
 export const NotificationsPage = () => {
   const authContext = useContext(AuthContext);
-  const notificationsService = new NotificationsService();
 
   const [notifications, setNotifications] = useState<Notification[]>([]);
 
   useEffect(() => {
-    const clientNotifications = notificationsService.getNotificationsByClient(authContext.user!.username);
+    const clientNotifications = notificationService.getNotificationsByClient(authContext.user!.username);
     setNotifications(clientNotifications);
   }, [authContext.user]);
 
   const handleMarkAsRead = (id: string) => {
-    notificationsService.markAsRead(id);
+    notificationService.markAsRead(id);
     setNotifications((prevNotifications) =>
       prevNotifications.map((notification) =>
         notification.id === id ? { ...notification, read: true } : notification

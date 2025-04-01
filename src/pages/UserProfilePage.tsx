@@ -1,18 +1,17 @@
 import { useContext, useState } from 'react';
-import { VetService } from '../services/vet.service';
 import { AuthContext } from '../context/auth';
 import { Button } from '../components/ui/Button';
+import { vetService } from '../services';
 
 export const UserProfilePage = () => {
-  const vetService = new VetService()
   const { user } = useContext(AuthContext)
-  const vet = vetService.getByUser(user?.username || "")
+  const vet = vetService.getByUsername(user?.username || "")
 
   // Estados para manejar los datos
   const [name, setName] = useState(vet?.name || '');
   const [phoneNumber, setPhoneNumber] = useState(vet?.phoneNumber || '');
   const [turn, setTurn] = useState(vet?.turn || 'Diurno');
-  const [branches, setBranches] = useState(vet?.branches || []);
+  const [branches] = useState(vet?.branches || []);
   const [password, setPassword] = useState(vet?.password || '');
   // Estado para controlar si estamos en modo edición
   const [isEditing, setIsEditing] = useState(false);
@@ -124,7 +123,7 @@ export const UserProfilePage = () => {
               id="branches"
               type="text"
               value={branches.join(', ')} // Muestra las sucursales separadas por coma
-              onChange={(e) => setBranches(e.target.value.split(',').map(branch => branch.trim()))}
+              // onChange={(e) => setBranches(e.target.value.split(',').map(branch => branch.trim()))}
               className="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
             <p className="text-xs text-gray-500">Separe las sucursales por coma.</p>

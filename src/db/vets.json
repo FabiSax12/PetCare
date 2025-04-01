@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "user": "f.vargas",
+    "password": "123456",
+    "branches": [
+      1
+    ],
+    "name": "Fabian Vargas",
+    "img": "/images/vets/default.jpg",
+    "turn": "Diurno",
+    "isBusy": true,
+    "phoneNumber": 12345678,
+    "address": "Avenida Central, Alajuela, Costa Rica",
+    "email": "fabian.vargas@example.com"
+  },
+  {
+    "id": 2,
+    "user": "j.salas",
+    "password": "123456",
+    "branches": [
+      3
+    ],
+    "name": "Joseph Salas",
+    "img": "/images/vets/default.jpg",
+    "turn": "Diurno",
+    "isBusy": false,
+    "phoneNumber": 12345678,
+    "address": "Calle 5, Heredia, Costa Rica",
+    "email": "joseph.salas@example.com"
+  },
+  {
+    "id": 3,
+    "user": "k.araya",
+    "password": "123456",
+    "branches": [
+      2
+    ],
+    "name": "Kenneth Araya",
+    "img": "/images/vets/default.jpg",
+    "turn": "Nocturno",
+    "isBusy": false,
+    "phoneNumber": 12345678,
+    "address": "Barrio San José, Cartago, Costa Rica",
+    "email": "kenneth.araya@example.com"
+  }
+]

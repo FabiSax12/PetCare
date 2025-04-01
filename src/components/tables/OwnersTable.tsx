@@ -1,18 +1,16 @@
 import { MessageCircleMore } from "lucide-react"
-import { ClientsService } from "../../services/clients.service"
 import { TableGrid } from "../TableGrid"
 import { TableRowCard } from "../ui/TableRowCard"
 import { Link, useNavigate, useParams } from "react-router"
 import Modal from "../ui/Modal"
 import { useState } from "react"
+import { clientService } from "../../services"
 
 export const OwnersTable = () => {
   const navigate = useNavigate()
   const params = useParams()
 
   const [isModalOpen, setModalOpen] = useState(false)
-
-  const clientService = new ClientsService()
 
   return (
     <>

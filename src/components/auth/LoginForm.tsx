@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from '../ui/Button';
-import { branches } from '../../mock/sucursales';
 import { Branch, UserLogin, VetLogin } from '../../types';
-import { BranchService } from '../../services/branches.service';
+import { branchService } from '../../services';
 
 interface VetLoginFormProps {
   type: "vet";
@@ -19,15 +18,14 @@ type Props = VetLoginFormProps | UserLoginFormProps;
 export const LoginForm: React.FC<Props> = ({ type, onSubmit }) => {
   const [user, setUsuario] = useState('');
   const [password, setPassword] = useState('');
-  const [branch, setSucursal] = useState<Branch>(branches[0]);
-
-  const branchService = new BranchService();
+  const [branch, setBranch] = useState<Branch>(branchService.getAll()[0]);
+  const [allBranches] = useState<Branch[]>(branchService.getAll());
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     if (type === 'vet') {
-      onSubmit({ user, password, branch: branch.name });
+      onSubmit({ user, password, branch: branch!.name });
     } else {
       onSubmit({ user, password });
     }
@@ -62,12 +60,12 @@ export const LoginForm: React.FC<Props> = ({ type, onSubmit }) => {
 
       {type === 'vet' && (
         <select
-          value={branch.name}
-          onChange={(e) => setSucursal(branchService.getByName(e.target.value)!)}
+          value={branch?.name}
+          onChange={(e) => setBranch(branchService.getById(parseInt(e.target.value))!)}
           className="w-full border px-3 py-2 rounded"
         >
-          {branchService.getAll().map((s) => (
-            <option key={s.name} value={s.name}>
+          {allBranches.map((s) => (
+            <option key={s.id} value={s.id}>
               {s.name}
             </option>
           ))}

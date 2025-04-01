@@ -1,18 +1,18 @@
-import { PetsService } from "../services/pets.service";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth";
 import { PetDetailsCard } from "../components/PetDetailsCard";
+import { dietService, petService } from "../services";
 
 export const ClientPetsPage = () => {
   const authContext = useContext(AuthContext);
-  const petsService = new PetsService();
 
-  const clientPets = petsService.getByOwner(authContext.user!.username);
+  const clientPets = petService.getByOwner(authContext.user!.username);
+
 
   return (
     clientPets.length > 0
       ? clientPets.map(pet => (
-        <PetDetailsCard key={pet.id} pet={pet} petDieta={pet.diet} />
+        <PetDetailsCard key={pet.id} pet={pet} petDieta={dietService.getById(pet.diet)} />
       ))
       : (
         <div className="flex items-center justify-center h-full w-full text-text">

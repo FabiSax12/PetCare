@@ -1,0 +1,89 @@
+[
+  {
+    "id": 1,
+    "name": "Joseph Salas",
+    "user": "j.salas",
+    "password": "123456",
+    "phoneNumber": 85555555,
+    "pets": [
+      1,
+      2
+    ],
+    "address": "Avenida Central, San José, Costa Rica",
+    "email": "joseph.salas@example.com"
+  },
+  {
+    "id": 2,
+    "name": "Fabian Vargas",
+    "user": "f.vargas",
+    "password": "password123",
+    "phoneNumber": 85555555,
+    "pets": [
+      3
+    ],
+    "address": "Barrio Escalante, San José, Costa Rica",
+    "email": "fabian.vargas@example.com"
+  },
+  {
+    "id": 3,
+    "name": "Lorena Rios",
+    "user": "l.rios",
+    "password": "alicepass",
+    "phoneNumber": 85555555,
+    "pets": [
+      4,
+      5
+    ],
+    "address": "Pavas, San José, Costa Rica",
+    "email": "lorena.rios@example.com"
+  },
+  {
+    "id": 4,
+    "name": "David Molina",
+    "user": "d.molina",
+    "password": "bobpass",
+    "phoneNumber": 85555555,
+    "pets": [
+      6,
+      7
+    ],
+    "address": "Alajuela Centro, Alajuela, Costa Rica",
+    "email": "david.molina@example.com"
+  },
+  {
+    "id": 5,
+    "name": "Aaron Lios",
+    "user": "a.lios",
+    "password": "doepass",
+    "phoneNumber": 85555555,
+    "pets": [
+      8
+    ],
+    "address": "Cartago Centro, Cartago, Costa Rica",
+    "email": "aaron.lios@example.com"
+  },
+  {
+    "id": 6,
+    "name": "Paula Castillo",
+    "user": "p.castillo",
+    "password": "janepass",
+    "phoneNumber": 85555555,
+    "pets": [
+      9
+    ],
+    "address": "Heredia Centro, Heredia, Costa Rica",
+    "email": "paula.castillo@example.com"
+  },
+  {
+    "id": 7,
+    "name": "Victor Sandi",
+    "user": "v.sandi",
+    "password": "smithpass",
+    "phoneNumber": 85555555,
+    "pets": [
+      10
+    ],
+    "address": "San Francisco de Dos Ríos, San José, Costa Rica",
+    "email": "victor.sandi@example.com"
+  }
+]
