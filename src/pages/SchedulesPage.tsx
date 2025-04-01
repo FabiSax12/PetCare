@@ -1,7 +1,6 @@
 import { Scissors, Stethoscope } from "lucide-react"
 import { HorizontalNav } from "../components/ui/HorizontalNav"
 import { Outlet } from "react-router"
-import { WeeklyCalendar } from "../components/WeeklyCalendar"
 
 const schedules = [
   {

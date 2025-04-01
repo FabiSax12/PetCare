@@ -16,7 +16,6 @@ export const MedicalConsultation = () => {
     <div >
       <WeeklyCalendar
         appointments={appointments}
-        // title="Consultas Médicas"
         medicalAppointmentColor="bg-blue-500"
         getAppointmentSubtitle={getAppointmentSubtitle}
       />

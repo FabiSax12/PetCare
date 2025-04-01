@@ -1,20 +1,14 @@
-
-
-
-
-// src/components/WeeklyCalendar.tsx
 "use client";
 
-import React, { useState, useMemo, useRef, useEffect } from "react"; // Importa React y hooks
+import React, { useState, useMemo, useRef, useEffect } from "react"; 
 import dayjs from "dayjs";
 import "dayjs/locale/es";
 import weekOfYear from "dayjs/plugin/weekOfYear";
 import localizedFormat from "dayjs/plugin/localizedFormat";
-import isBetween from "dayjs/plugin/isBetween"; // Para comprobar si una cita está en el slot
+import isBetween from "dayjs/plugin/isBetween"; 
 import { ChevronLeft, ChevronRight, Weight } from "lucide-react";
 import type { Appointment, MedicalAppointment, AestheticAppointment } from "../types";
 
-// Configura dayjs
 dayjs.extend(weekOfYear);
 dayjs.extend(localizedFormat);
 dayjs.extend(isBetween);
@@ -28,17 +22,16 @@ interface WeeklyCalendarProps {
   getAppointmentSubtitle?: (appointment: Appointment) => string;
   onSelectAppointment?: (appointment: Appointment) => void;
   initialDate?: Date | string;
-  // Nueva prop para controlar la altura del área desplazable
-  calendarHeight?: string; // Ej: "600px", "70vh", "calc(100vh - 200px)"
+  calendarHeight?: string; 
 }
 
-// --- Componente de Barra de Navegación (Separado para claridad) ---
+
 const CalendarNavBar = ({ currentDate, onNavigate }: { currentDate: dayjs.Dayjs; onNavigate: (dir: "prev" | "next") => void }) => {
   const dateRangeText = useMemo(() => {
     const startOfWeek = currentDate.startOf("week");
     const endOfWeek = currentDate.endOf("week");
     const startFormat = startOfWeek.format("D");
-    const endFormat = endOfWeek.format("D [de] MMMM YYYY"); // Añadir año
+    const endFormat = endOfWeek.format("D [de] MMMM YYYY"); 
     return `${startFormat} - ${endFormat}`;
   }, [currentDate]);
 
@@ -63,7 +56,7 @@ const CalendarNavBar = ({ currentDate, onNavigate }: { currentDate: dayjs.Dayjs;
   );
 };
 
-// --- Componente Principal del Calendario ---
+
 export const WeeklyCalendar = ({
   appointments = [],
   medicalAppointmentColor = "bg-blue-500",
@@ -72,71 +65,64 @@ export const WeeklyCalendar = ({
   getAppointmentSubtitle = (app) => app.type === 'medical' ? (app as MedicalAppointment).reason : (app as AestheticAppointment).service,
   onSelectAppointment,
   initialDate,
-  calendarHeight = "calc(100vh - 150px)", // Altura por defecto para el scroll, ajustar según tu layout
+  calendarHeight = "calc(100vh - 150px)", 
 }: WeeklyCalendarProps) => {
   const [currentDate, setCurrentDate] = useState(initialDate ? dayjs(initialDate) : dayjs());
-  const scrollContainerRef = useRef<HTMLDivElement>(null); // Ref para el contenedor de scroll
+  const scrollContainerRef = useRef<HTMLDivElement>(null); 
 
-  // --- Cálculos de Fecha ---
+  
   const startOfWeek = useMemo(() => currentDate.startOf("week"), [currentDate]);
   const weekDays = useMemo(() => Array.from({ length: 7 }, (_, i) => startOfWeek.add(i, "day")), [startOfWeek]);
 
-  // --- Horas del Día ---
+
   const timeSlots = useMemo(() => {
     const slots = [];
-    // Generar slots cada 30 minutos para más granularidad si se desea, o mantener cada hora
-    for (let hour = 7; hour < 19; hour++) { // Rango de 7am a 6pm (termina antes de las 7pm)
+  
+    for (let hour = 7; hour < 19; hour++) { 
       slots.push(dayjs().hour(hour).minute(0).second(0));
-      // Descomentar para slots de 30 min:
-      // slots.push(dayjs().hour(hour).minute(30).second(0));
     }
     return slots;
   }, []);
 
-  // --- Navegación ---
+  
   const navigateWeek = (direction: "prev" | "next") => {
     setCurrentDate((prev) => prev.add(direction === "next" ? 1 : -1, "week"));
   };
 
-  // --- Obtener Citas para una Celda (Día/Hora) ---
-  // Esta función ahora necesita encontrar citas que *ocurran durante* este slot
+
   const getAppointmentsForSlot = (day: dayjs.Dayjs, time: dayjs.Dayjs) => {
     if (!Array.isArray(appointments)) return [];
     const slotStart = time;
-    // Asumir slots de 1 hora por ahora, ajustar si usas 30 min
     const slotEnd = time.add(1, 'hour');
-
     return appointments.filter((app) => {
       if (!app || !app.start || !app.end) return false;
       const appStart = dayjs(app.start);
       const appEnd = dayjs(app.end);
 
-      // Comprobar si la cita se solapa con el slot de tiempo actual en el día correcto
+      
       return appStart.isSame(day, "day") && // Mismo día
-             (appStart.isBefore(slotEnd) && appEnd.isAfter(slotStart)); // Solapamiento de tiempo
+             (appStart.isBefore(slotEnd) && appEnd.isAfter(slotStart)); 
     });
   };
 
- // --- Calcular Estilo de Cita (Posición y Altura Relativa al Día) ---
+
  const calculateAppointmentStyle = (appointment: Appointment, dayStartTime: dayjs.Dayjs, totalDayHeightPx: number, hourHeightPx: number) => {
     if (!appointment || !appointment.start || !appointment.end) {
       return { top: 0, height: hourHeightPx, display: 'none',innerWidth:widthValue};
     }
 
-    const startOfDay = dayStartTime.startOf('day'); // Referencia: inicio del día
+    const startOfDay = dayStartTime.startOf('day'); 
     const appStart = dayjs(appointment.start);
     const appEnd = dayjs(appointment.end);
 
-    // Calcular minutos desde el inicio del día visible (ej: 7am)
-    const minutesFromDayStart = appStart.diff(startOfDay.hour(7), 'minute'); // Ajustar hora de inicio si cambia
+  
+    const minutesFromDayStart = appStart.diff(startOfDay.hour(7), 'minute'); 
     const durationMinutes = appEnd.diff(appStart, "minute");
 
-    // Calcular posición top y altura en píxeles
-    // Asumiendo que cada hora tiene hourHeightPx
+    
     const pixelsPerMinute = hourHeightPx / 60;
     const topPx = minutesFromDayStart * pixelsPerMinute;
-    const heightPx = Math.max(durationMinutes * pixelsPerMinute, 20); // Altura mínima
-
+    const heightPx = Math.max(durationMinutes * pixelsPerMinute, 20); 
     let backgroundColorClass = defaultAppointmentColor;
     if (appointment.type === 'medical') {
         backgroundColorClass = medicalAppointmentColor;
@@ -150,11 +136,11 @@ export const WeeklyCalendar = ({
       backgroundColorClass: backgroundColorClass,
     };
   };
-  const widthValue = 108; // Ancho de las celdas
-  const hourHeightPx = 64; // Corresponde a h-16 de Tailwind. ¡Asegúrate que coincida!
-  const totalDayHeightPx = timeSlots.length * hourHeightPx; // Altura total de la columna de un día
+  const widthValue = 108; 
+  const hourHeightPx = 64; 
+  const totalDayHeightPx = timeSlots.length * hourHeightPx; 
 return (
-  // Contenedor principal del componente
+  
   <div className="flex flex-col fixed bottom-8 top-25 right-13 left-35 bg-white rounded-lg shadow-md border border-gray-200 " style={{height: `${totalDayHeightPx}px`}}>
 
     {/* 1. Barra de Navegación */}
