@@ -236,7 +236,7 @@ return (
                       key={appointment.id}
                       onClick={() => onSelectAppointment?.(appointment)}
                       className={`absolute left-1 right-1 rounded p-1 text-white text-[10px] leading-tight cursor-pointer overflow-hidden ${backgroundColorClass} z-20`}
-                      style={{ top, height, margin: "5px" }}
+                      style={{ top, height, margin: "5px" , opacity: 0.8}}
                       title={appointment.title}
                     >
                       <div className="font-semibold truncate">{displayTitle}</div>

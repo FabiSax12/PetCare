@@ -23,7 +23,7 @@ export const appointments: Appointment[] = [
     ownerId: 2,
     type: 'medical',
     doctorId: 1,
-    reason: '',
+    reason: 'Asfixia',
     status: 'scheduled'
   },
   {
@@ -35,7 +35,7 @@ export const appointments: Appointment[] = [
     ownerId: 3,
     type: 'medical',
     doctorId: 1,
-    reason: 'just because',
+    reason: '',
     status: 'scheduled'
   },
   {
